@@ -62,7 +62,7 @@ int main() {
     printf("Selecciona una opcion:\n");
     printf("1. Mostrar en mayuscula\n");
     printf("2. Mostrar en minuscula\n");
-    printf("3. Mostrar alternando mayúscula y minuscula\n");
+    printf("3. Mostrar alternando mayuscula y minuscula\n");
     printf("4. Mostrar comenzando las palabras en mayuscula\n");
     scanf("%d", &opcion);
 
