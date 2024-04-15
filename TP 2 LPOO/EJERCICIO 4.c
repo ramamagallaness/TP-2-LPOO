@@ -1,22 +1,14 @@
-/* 4 Realiza un programa que reemplace todas las apariciones de un car·cter
-en una cadena de caracteres ingresada por el usuario por otro car·cter
-tambiÈn ingresado por el usuario. */
+/* 4 Realiza un programa que reemplace todas las apariciones de un car√°cter
+en una cadena de caracteres ingresada por el usuario por otro car√°cter
+tambi√©n ingresado por el usuario. */
 
 #include <stdio.h>
 #include <string.h>
 
-void caracterReemplazado(char *str, char viejoCaracter, char nuevoCaracter) {
-    int i;
-    for (i = 0; str[i] != '\0'; i++) {
-        if (str[i] == viejoCaracter) {
-            str[i] = nuevoCaracter;
-        }
-    }
-}
-
 int main() {
     char str[100];
     char viejoCaracter, nuevoCaracter;
+    int i, j;
 
     printf("Ingresa una cadena de caracteres: ");
     fgets(str, sizeof(str), stdin);
@@ -27,11 +19,16 @@ int main() {
     printf("Ingresa el nuevo caracter: ");
     scanf(" %c", &nuevoCaracter);
 
-    caracterReemplazado(str, viejoCaracter, nuevoCaracter);
+    for (i = 0; str[i] != '\0'; i++) {
+        if (str[i] == viejoCaracter) {
+            for (j = i; str[j] != '\0'; j++) {
+                str[j] = str[j + 1];
+            }
+            str[i] = nuevoCaracter;
+        }
+    }
 
     printf("La cadena modificada es: %s\n", str);
 
     return 0;
 }
-
-
