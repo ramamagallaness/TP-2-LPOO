@@ -10,48 +10,6 @@ D) Mostrar la oración comenzando todas las palabras con mayúscula */
 #include <string.h>
 #include <ctype.h>
 
-void todasMayusculas(char oracion[]) {
-    for(int i = 0; oracion[i]; i++) {
-        oracion[i] = toupper(oracion[i]);
-    }
-    printf("Oracion en mayuscula: %s\n", oracion);
-}
-
-void todasMinusculas(char oracion[]) {
-    for(int i = 0; oracion[i]; i++) {
-        oracion[i] = tolower(oracion[i]);
-    }
-    printf("Oracion en minuscula: %s\n", oracion);
-}
-
-void alternarMayusculas(char oracion[]) {
-    for(int i = 0; oracion[i]; i++) {
-        if(i % 2 == 0) {
-            oracion[i] = toupper(oracion[i]);
-        } else {
-            oracion[i] = tolower(oracion[i]);
-        }
-    }
-    printf("Oracion alternando mayusculas y minusculas: %s\n", oracion);
-}
-
-void capitalizarPalabras(char oracion[]) {
-    int capitalizar = 1;
-    for(int i = 0; oracion[i]; i++) {
-        if(isalpha(oracion[i])) {
-            if(capitalizar) {
-                oracion[i] = toupper(oracion[i]);
-                capitalizar = 0;
-            } else {
-                oracion[i] = tolower(oracion[i]);
-            }
-        } else {
-            capitalizar = 1;
-        }
-    }
-    printf("Oracion con palabras en mayuscula: %s\n", oracion);
-}
-
 int main() {
     char oracion[100];
     printf("Ingresa una oracion: ");
@@ -66,21 +24,42 @@ int main() {
     printf("4. Mostrar comenzando las palabras en mayuscula\n");
     scanf("%d", &opcion);
 
-    switch(opcion) {
-        case 1:
-            todasMayusculas(oracion);
-            break;
-        case 2:
-            todasMinusculas(oracion);
-            break;
-        case 3:
-            alternarMayusculas(oracion);
-            break;
-        case 4:
-            capitalizarPalabras(oracion);
-            break;
-        default:
-            printf("Opcion invalida\n");
+    if(opcion == 1) {
+        for(int i = 0; oracion[i]; i++) {
+            oracion[i] = toupper(oracion[i]);
+        }
+        printf("Oracion en mayuscula: %s\n", oracion);
+    } else if(opcion == 2) {
+        for(int i = 0; oracion[i]; i++) {
+            oracion[i] = tolower(oracion[i]);
+        }
+        printf("Oracion en minuscula: %s\n", oracion);
+    } else if(opcion == 3) {
+        for(int i = 0; oracion[i]; i++) {
+            if(i % 2 == 0) {
+                oracion[i] = toupper(oracion[i]);
+            } else {
+                oracion[i] = tolower(oracion[i]);
+            }
+        }
+        printf("Oracion alternando mayusculas y minusculas: %s\n", oracion);
+    } else if(opcion == 4) {
+        int capitalizar = 1;
+        for(int i = 0; oracion[i]; i++) {
+            if(isalpha(oracion[i])) {
+                if(capitalizar) {
+                    oracion[i] = toupper(oracion[i]);
+                    capitalizar = 0;
+                } else {
+                    oracion[i] = tolower(oracion[i]);
+                }
+            } else {
+                capitalizar = 1;
+            }
+        }
+        printf("Oracion con palabras en mayuscula: %s\n", oracion);
+    } else {
+        printf("Opcion invalida\n");
     }
 
     return 0;
